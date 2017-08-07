@@ -134,12 +134,12 @@ class PDSHexagonFlowLayout: UICollectionViewFlowLayout {
                 break
             }
         }
-        print("layoutAttributesForElements \(section) \(item)")
         
         // Loop over attributes
-        let indexPath = IndexPath(item: item, section: section)
-        
         for _ in start..<end {
+            
+            let indexPath = IndexPath(item: item, section: section)
+            
             if item == 0 {
                 let kind = UICollectionElementKindSectionHeader
                 if let attributes = self.layoutAttributesForSupplementaryView(ofKind: kind, at: indexPath) {
@@ -155,7 +155,6 @@ class PDSHexagonFlowLayout: UICollectionViewFlowLayout {
             }
             
             if let attributes = self.layoutAttributesForItem(at: indexPath) {
-                print("add \(section) \(item)")
                 allAttributes.append(attributes)
             }
             
@@ -177,7 +176,7 @@ class PDSHexagonFlowLayout: UICollectionViewFlowLayout {
         let x = self.centerXForItemAtIndexPath(indexPath: indexPath)
         let y = self.centerYForItemAtIndexPath(indexPath: indexPath)
         attributes?.center = CGPoint(x: x, y: y)
-        print(x,y)
+        print(indexPath, x, y)
         
         return attributes
     }
